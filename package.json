@@ -1,0 +1,38 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api for the Fr hackathon",
+  "main": "app.js",
+  "repository": "git@github.com:FlutterwaveXReloadly/api.git",
+  "author": "Alain Christian <48126545+gal1l0@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "launch": "npx kill-port 7000 && node --experimental-modules --es-module-specifier-resolution=node ./src/app.js",
+    "start": "yarn launch",
+    "dev": "nodemon --exec yarn launch"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "2.22.1",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "aws": "^0.0.3-2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "ioredis": "^4.27.9",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.3",
+    "uuid": "^8.3.2"
+  }
+}
