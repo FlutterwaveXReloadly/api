@@ -1,0 +1,19 @@
+HTTP/1.1 404 Not Found
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 81
+ETag: W/"51-Ldbr3HZi6qhJX6Bex0lYS6HxvjE"
+Date: Mon, 13 Sep 2021 16:10:03 GMT
+Connection: close
+
+{"status":404,"message":"Invalid password and email combination","error":"CU0-0"}

@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 280
+ETag: W/"118-7YRsCMRQQwaadGrHLxdJXIDHx/I"
+Date: Mon, 13 Sep 2021 16:07:37 GMT
+Connection: close
+
+{"status":200,"message":"Logged in successfully","data":{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjEzZjJlYzI1NmNkNTNhYzllMDQyMzgxIiwiYWNjZXNzIjoidXNlciIsImlhdCI6MTYzMTU0OTI1NywiZXhwIjoxNjMxNjM1NjU3fQ.fDTfH4X6FrQ-lAD5_GiJJGcx30bx3CZkwG1JcqsD0pg","access":"user"}}
