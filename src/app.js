@@ -22,7 +22,7 @@ app.use((res, req, next) => {
 });
 
 app.use((req, res) =>
-  res.statusCode(404).json({ message: "Not found", status: 404 })
+  res.statusCode(404).json({ message: "Not found!", status: 404 })
 );
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -11,7 +11,7 @@
   "scripts": {
     "launch": "npx kill-port 7000 && node --experimental-modules --es-module-specifier-resolution=node ./src/app.js",
     "start": "yarn launch",
-    "dev": "nodemon --exec yarn launch"
+    "dev": "nodemon --exec node --experimental-modules --es-module-specifier-resolution=node ./src/app.js"
   },
   "devDependencies": {
     "eslint": "5.16.0",
