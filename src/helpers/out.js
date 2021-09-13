@@ -1,5 +1,5 @@
 export default (res, data, statusCode, message, error) => {
   return res
-    .statusCode(statusCode)
+    .status(statusCode)
     .json({ status: statusCode, message, data, error });
 };
