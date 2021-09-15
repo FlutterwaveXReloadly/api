@@ -17,8 +17,8 @@ export default  class User {
       }
       const passwordValidation = await compare(password, user[0].password);
       if (passwordValidation) {
-        const token = sign({ user: user[0].id, access: "user" });
-        return out(res, { token, access: "user" }, 200, 'Logged in successfully', undefined);
+        const token = sign({ user: user[0].id, access: user[0].type });
+        return out(res, { token, access: user[0].type }, 200, 'Logged in successfully', undefined);
       }
         return out(res, undefined, 401, 'Invalid password and email combination', 'CU0-1');
     } catch (error) {
@@ -36,6 +36,7 @@ export default  class User {
       }
       const user = await userService.add({
         ...req.body,
+        type: Number(req.params.type),
         password: await hash(password),
         image: await uploader(resolve(req.file.path)),
       });

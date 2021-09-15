@@ -5,6 +5,6 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "alainchristian837@gmail.com",
+   "email": "alainchristian86@gmail.com",
    "password": "nAdia123"
 }
