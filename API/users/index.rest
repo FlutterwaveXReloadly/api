@@ -5,6 +5,17 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "alainchristian86@gmail.com",
+   "email": "xeleso3851@shensufu.com",
    "password": "nAdia123"
+}
+###
+POST {{host}}/signup/0
+Content-Type: application/json
+Accept: application/json
+
+{
+   "email": "niwikib754@sicmag.com",
+   "password": "alain1231",
+   "names": "Alain C",
+   "country": "rwanda"
 }

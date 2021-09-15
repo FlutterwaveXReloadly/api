@@ -7,6 +7,7 @@ const schema = new mongoose.Schema({
     names: String,
     country: String,
     type: Number, // 0 - user, 1 - company, 2 - admin
+    isVerified: Boolean,
 });
 
 export default mongoose.model('user', schema);
