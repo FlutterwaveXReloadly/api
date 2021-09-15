@@ -27,7 +27,7 @@ app.use((res, req, next) => {
 
 app.use('/v1', upload.single('img'), routes);
 app.use((req, res) =>
-  res.statusCode(404).json({ message: "Not found!", status: 404 })
+  res.status(404).json({ message: "Not found!", status: 404 })
 );
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
