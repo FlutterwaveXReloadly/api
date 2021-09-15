@@ -19,9 +19,8 @@ const mailer = async (type, emailToSend) => {
       case 'verifyEmail':
         pathToEjs = path.resolve('src/public/verifyEmail.ejs');
         break;
-      case 'passwordReset':
-        pathToEjs = path.resolve('src/public/passwordReset.ejs');
-        // const ''
+      case 'forgotPassword':
+        pathToEjs = path.resolve('src/public/forgotPassword.ejs');
         break;
       case 'notification':
         pathToEjs = path.resolve('src/public/notification.ejs');
