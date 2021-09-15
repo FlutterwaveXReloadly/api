@@ -6,7 +6,7 @@ Accept: application/json
 
 {
    "email": "xeleso3851@shensufu.com",
-   "password": "nAdia123"
+   "password": "qazwsxedc"
 }
 ###
 POST {{host}}/signup/0
@@ -18,4 +18,21 @@ Accept: application/json
    "password": "alain1231",
    "names": "Alain C",
    "country": "rwanda"
+}
+###
+POST {{host}}/password/send-forgot-link
+Content-Type: application/json
+Accept: application/json
+
+{
+   "email": "xeleso3851@shensufu.com"
+}
+###
+PATCH {{host}}/password/reset
+Content-Type: application/json
+Accept: application/json
+
+{
+   "password": "qazwsxedc",
+   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjE0MjFmNjNhYzA4MjBkOGY0NjMwMzdiIiwiaWF0IjoxNjMxNzI3MTU3LCJleHAiOjE2MzE4MTM1NTd9.EImTqvrtitbe__VWgCWkgdJEALBk1TuXOIHqlNxpJMo"
 }

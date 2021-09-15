@@ -101,6 +101,52 @@ export default class User {
       }
     } catch (error) {
       console.log(`ERROR: ${error.message}`);
+      return res.redirect(302, `${env.FRONTEND_HOST}/500`);
+    }
+  }
+
+  async forgotPassword(req, res) {
+    try {
+      const { email } = req.body;
+      const user = await userService.get({ email });
+      if (user.length === 0) {
+        return out(res, undefined, 404, "Email not found", "CU2-0");
+      } else {
+        const token = sign({ user: user[0]._id });
+        await mailer('forgotPassword', {
+          to: user[0].email,
+          subject: "Password reset",
+          data: {
+            link: `${env.FRONTEND_HOST}/reset?token=${token}`,
+          }
+        });
+        return out(res, undefined, 200, "Email sent", undefined);
+      }
+     } catch (error) {
+      console.log(`ERROR: ${error.message}`);
+      return out(res, undefined, 500, "Internal server error", "CU2-1");
+    }
+  }
+
+  async resetPassword(req, res) {
+    try {
+      const { token, password } = req.body;
+      const { user } = verify(token);
+      if (!user) {
+        return out(res, undefined, 404, "Email not found", "CU3-0");
+      }
+      const userData = await userService.update(
+        { _id: user },
+        { password: await hash(password) }
+      );
+      if (userData) {
+        return out(res, undefined, 200, "Password was reset", undefined);
+      } else {
+        return out(res, undefined, 500, "Internal server error", "CU3-1");
+      }
+    } catch (error) {
+      console.log(`ERROR: ${error.message}`);
+      return out(res, undefined, 500, "Internal server error", "CU3-2");
     }
   }
 }
