@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 536
+ETag: W/"218-HiTgyBgt6lbP2Ah+rP2gWoyVvDc"
+Date: Tue, 21 Sep 2021 09:03:44 GMT
+Connection: close
+
+{"status":200,"message":"User information was pulled","data":{"bankDetails":{"accountNumber":"1234567890","bankName":"banque","IBAN":"RW-WERW"},"_id":"61421f63ac0820d8f463037b","email":"xeleso3851@shensufu.com","password":"$2b$10$AncNVp8Uz0m4BHhrxmCdbeRc2P.p1rv0vsHvTUBOVZHBeCuvfb//m","image":"https://res.cloudinary.com/gal1l0/image/upload/v1631723364/q01smkc5ycbnv6xl5n5h.png","names":"alain","country":"Rwanda","type":0,"isVerified":true,"__v":0,"skills":["Graphic design","audio production"],"createdAt":"2021-09-21T09:03:44.960Z"}}
