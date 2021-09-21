@@ -1,5 +1,11 @@
 import validator from "../../helpers/validator";
-import { login, signup, passwordReset, forgotPassword } from "./schemas/users";
+import {
+  login,
+  signup,
+  passwordReset,
+  forgotPassword,
+  updateProfile,
+} from "./schemas/users";
 
 export const validateLogin = (req, res, next) => {
   validator(login, req.body, res, next);
@@ -14,4 +20,8 @@ export const validatePasswordReset = (req, res, next) => {
 
 export const validateForgotPassword = (req, res, next) => {
   validator(forgotPassword, req.body, res, next);
+};
+
+export const validateUpdateProfile = (req, res, next) => {
+  validator(updateProfile, req.body, res, next);
 };

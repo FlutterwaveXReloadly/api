@@ -8,6 +8,16 @@ const schema = new mongoose.Schema({
     country: String,
     type: Number, // 0 - user, 1 - company, 2 - admin
     isVerified: Boolean,
+    bankDetails: {
+        accountNumber: String,
+        bankName: String,
+        IBAN: String,
+    },
+    skills: [String],
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 export default mongoose.model('user', schema);

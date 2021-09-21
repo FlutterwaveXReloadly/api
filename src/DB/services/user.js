@@ -12,6 +12,7 @@ export default class User {
   }
 
   async update(search, raw) {
+    console.log(raw);
     const updates = await userModel.updateOne(search, raw, { new: true });
     return updates;
   }

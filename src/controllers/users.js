@@ -113,16 +113,16 @@ export default class User {
         return out(res, undefined, 404, "Email not found", "CU2-0");
       } else {
         const token = sign({ user: user[0]._id });
-        await mailer('forgotPassword', {
+        await mailer("forgotPassword", {
           to: user[0].email,
           subject: "Password reset",
           data: {
             link: `${env.FRONTEND_HOST}/reset?token=${token}`,
-          }
+          },
         });
         return out(res, undefined, 200, "Email sent", undefined);
       }
-     } catch (error) {
+    } catch (error) {
       console.log(`ERROR: ${error.message}`);
       return out(res, undefined, 500, "Internal server error", "CU2-1");
     }
@@ -147,6 +147,46 @@ export default class User {
     } catch (error) {
       console.log(`ERROR: ${error.message}`);
       return out(res, undefined, 500, "Internal server error", "CU3-2");
+    }
+  }
+
+  async updateUser(req, res) {
+    try {
+      const { user } = req;
+      const { password } = req.body;
+      const raw = {
+        ...req.body,
+        password: password && await hash(password),
+      };
+      const update = await userService.update({ _id: user }, raw);
+      console.log(update);
+      if (update.modifiedCount === 1 || update.matchedCount === 1) {
+        return out(
+          res,
+          undefined,
+          200,
+          "User information was updated",
+          undefined
+        );
+      }
+      return out(res, undefined, 500, "Internal server error", "CU4-0");
+    } catch (error) {
+      console.log(`ERROR: ${error.message}`);
+      return out(res, undefined, 500, "Internal server error", "CU4-1");
+    }
+  }
+
+  async pullUser(req, res) {
+    try {
+      const { user } = req;
+      const userData = await userService.get({ _id: user });
+      if (userData.length === 0) {
+        return out(res, undefined, 404, "User not found", "CU5-0");
+      }
+      return out(res, userData[0], 200, "User information was pulled", undefined);
+    } catch (error) {
+      console.log(`ERROR: ${error.message}`);
+      return out(res, undefined, 500, "Internal server error", "CU5-1");
     }
   }
 }

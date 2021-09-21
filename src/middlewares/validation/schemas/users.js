@@ -20,3 +20,16 @@ export const passwordReset = joi.object().keys({
 export const forgotPassword = joi.object().keys({
     email: joi.string().email().required()
 });
+
+export const updateProfile = joi.object().keys({
+    country: joi.string(),
+    email: joi.string().email(),
+    names: joi.string(),
+    password: joi.string().min(8),
+    bankDetails: {
+        accountNumber: joi.string(),
+        bankName: joi.string(),
+        IBAN: joi.string(),
+    },
+    skills: joi.array().items(joi.string())
+});
