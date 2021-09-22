@@ -25,6 +25,11 @@ export const isCompany = (req, res, next) => {
   authenticate(1, access, user, ["MA2-0", "MA2-1"], next, req, res);
 };
 
+export const isAdmin = (req, res, next) => {
+  const { access, user } = verify(req.headers["authorization"].split(" ")[1]);
+  authenticate(2, access, user, ["MA2-0", "MA2-1"], next, req, res);
+};
+
 export const isLoggedIn = (req, res, next) => {
   try {
     const { access, user } = verify(req.headers["authorization"].split(" ")[1]);

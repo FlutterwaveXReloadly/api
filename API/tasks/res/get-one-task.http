@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 354
+ETag: W/"162-uC+3joLzVTvaCLZnDLuvErYlBBc"
+Date: Wed, 22 Sep 2021 14:31:03 GMT
+Connection: close
+
+{"status":200,"message":"Tasks found","data":[{"_id":"614b082ce1f12d838bedab06","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"f72eca7d-1c5b-4046-9822-87dd6cc64484","createdAt":"2021-09-22T10:40:44.948Z","__v":0}]}

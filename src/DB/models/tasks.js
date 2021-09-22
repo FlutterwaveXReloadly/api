@@ -21,7 +21,19 @@ const tasksModel = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    txRef: String
+    txRef: String,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+    progress: {
+        type: String,
+        default: "unstarted"
+    },
+    completion: {
+        type: String,
+        default: "incomplete"
+    }
 });
 
 export default mongoose.model('tasks', tasksModel);

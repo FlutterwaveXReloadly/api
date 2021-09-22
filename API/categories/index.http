@@ -1,0 +1,22 @@
+@host = {{local}}/categories
+@id = 614b3b3c3433aaf413214c1e
+POST {{host}}/add
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+    "name": "Graphic design",
+    "description": "Graphic design is the process of visual communication and problem-solving through the use of typography, photography, and illustration."
+}
+###
+GET {{host}}/{{id}}
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+### Any user can get the category not just admins
+GET {{host}}/
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}

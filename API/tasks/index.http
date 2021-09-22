@@ -8,5 +8,42 @@ Authorization: Bearer {{companyToken}}
 {
     "title": "Graphic design",
     "description": "bla bla bla bla bla bla bla bla",
-    "amount": "10"
+    "amount": "10",
+    "category": "614b3b3c3433aaf413214c1e"
+}
+
+###
+GET {{host}}/614b082ce1f12d838bedab06
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+
+###
+GET {{host}}/sort/category/614b4e7f8ade9529646a87e2
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+
+### only users can register interests with a task
+PATCH {{host}}/interests/614b082ce1f12d838bedab06
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+### only clients/companies can update the completion of a task
+PATCH {{host}}/completion/614b082ce1f12d838bedab06
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{companyToken}}
+
+{
+    "completion": "complete"
+}
+
+### only users can update the progress of the task
+PATCH {{host}}/progress/614b082ce1f12d838bedab06
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+    "progress": "finishes"
 }
