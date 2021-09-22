@@ -13,10 +13,16 @@ export default class User {
     try {
       const { body } = req;
       const user = await userService.get({ _id: req.user });
-      const task = await taskService.add({ ...body, user: req.user });
+      const txRef = v4();
+      const task = await taskService.add({
+        ...body,
+        status: "unVerified",
+        user: req.user,
+        txRef,
+      });
       const pay = await standard(
         body.amount,
-        v4(),
+        txRef,
         {
           taskId: task._id,
           user: req.user,
@@ -24,11 +30,17 @@ export default class User {
         {
           email: user[0].email,
           name: user[0].names,
-          phoneNumber: user[0].phoneNumber || "0780964422",
+          phoneNumber: user[0].phoneNumber,
         }
       );
       if (pay.data && task) {
-        return out(res, pay.data, 201, "Tasks created", undefined);
+        return out(
+          res,
+          { pay: pay.data, task },
+          201,
+          "Tasks created",
+          undefined
+        );
       }
       return out(res, { ...pay, task }, 400, "Bad Request", "CT0-0");
     } catch (error) {

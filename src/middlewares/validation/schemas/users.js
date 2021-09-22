@@ -31,5 +31,7 @@ export const updateProfile = joi.object().keys({
         bankName: joi.string(),
         IBAN: joi.string(),
     },
-    skills: joi.array().items(joi.string())
+    skills: joi.array().items(joi.string()),
+    phoneNumber: joi.string(),
+    type: joi.number(),
 });

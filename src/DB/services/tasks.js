@@ -9,7 +9,7 @@ export default class Tasks {
     return await tasks.find(search);
   }
 
-  async update(id, raw) {
-    return await tasks.findByIdAndUpdate(id, raw, { new: true });
+  async update(search, raw) {
+    return await tasks.updateOne(search, raw, { new: true });
   }
 }

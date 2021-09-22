@@ -1,3 +1,4 @@
+import { env } from "../config/env";
 import { verify } from "../helpers/jwt";
 import out from "../helpers/out";
 
@@ -38,3 +39,16 @@ export const isLoggedIn = (req, res, next) => {
     out(res, { err }, 500, "Internal server error", "MA3-1");
   }
 };
+
+export const isRave = (req, res, next) => {
+  try {
+    const verifHash = req.headers["verif-hash"];
+    if (verifHash !== env.RAVE_ENC_KEY) {
+      return out(res, undefined, 422, "Resource access denied", "MA4-0");  
+    }
+    next();
+  } catch (error) {
+    console.log(error);
+    out(res, { error }, 500, "Internal server error", "MA4-1");
+  }
+}

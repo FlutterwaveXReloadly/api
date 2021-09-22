@@ -18,7 +18,7 @@ export const standard = async (amount, tx_ref, meta, customer) => {
        logo: 'https://assets.piedpiper.com/logo.png'
     };
     const response = await Fetch(
-      env.RAVE_HOST,
+      `${env.RAVE_HOST}/payments`,
       "POST",
       {
         Authorization: `Bearer ${env.RAVE_SEC}`,
@@ -29,3 +29,14 @@ export const standard = async (amount, tx_ref, meta, customer) => {
     );
     return response;
 };
+
+export const transVerify = async (transId) => {
+  const response = await Fetch(
+    `${env.RAVE_HOST}/transactions/${transId}/verify`,
+    'GET',
+    {
+      Authorization: `Bearer ${env.RAVE_SEC}`,
+    }
+  );
+  return response;
+}
