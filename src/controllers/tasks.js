@@ -19,11 +19,12 @@ export default class User {
         v4(),
         {
           taskId: task._id,
-          user,
+          user: req.user,
         },
         {
           email: user[0].email,
           name: user[0].names,
+          phoneNumber: user[0].phoneNumber || "0780964422",
         }
       );
       if (pay.data && task) {

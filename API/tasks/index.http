@@ -8,5 +8,5 @@ Authorization: Bearer {{companyToken}}
 {
     "title": "Graphic design",
     "description": "bla bla bla bla bla bla bla bla",
-    "amount": 10
+    "amount": "10"
 }
