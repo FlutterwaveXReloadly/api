@@ -3,7 +3,6 @@ LABEL author="gal1l0"
 # add basic deps
 RUN apt update && apt install -y curl
 RUN apt install -y redis-server
-RUN service redis-server start
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt update && apt install -y nodejs
 RUN npm install -g yarn
@@ -18,5 +17,5 @@ RUN mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app
 WORKDIR /opt/app
 ADD . /opt/app
 EXPOSE 7000
-CMD ["yarn", "start"]
+CMD ["sh", "start.sh"]
 
