@@ -13,7 +13,7 @@ export default class User {
     try {
       const { body } = req;
       const user = await userService.get({ _id: req.user });
-      const task = await taskService.add(body);
+      const task = await taskService.add({ ...body, user: req.user });
       const pay = await standard(
         body.amount,
         v4(),
@@ -27,9 +27,9 @@ export default class User {
         }
       );
       if (pay.data && task) {
-        return out(res, data, 201, "Tasks created", undefined);
+        return out(res, pay.data, 201, "Tasks created", undefined);
       }
-      return out(res, undefined, 400, "Bad Request", "CT0-0");
+      return out(res, { ...pay, task }, 400, "Bad Request", "CT0-0");
     } catch (error) {
       console.log(error);
       return out(res, undefined, 500, "Internal server error", "CT0-1");

@@ -48,7 +48,8 @@ Authorization: Bearer {{userToken}}
       "bankName": "banque mondiale",
       "IBAN": "RW-WERW"
    },
-   "skills": ["Graphic design", "audio production"]
+   "skills": ["Graphic design", "audio production"],
+   "type": 1
 }
 
 ###

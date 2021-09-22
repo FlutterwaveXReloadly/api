@@ -1,0 +1,12 @@
+@host = {{local}}/tasks
+
+POST {{host}}/add
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{companyToken}}
+
+{
+    "title": "Graphic design",
+    "description": "bla bla bla bla bla bla bla bla",
+    "amount": 10
+}
