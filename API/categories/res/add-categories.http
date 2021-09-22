@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 267
+ETag: W/"10b-eGdJnsJiv8iC5jhjFRQRkcbpP/k"
+Date: Wed, 22 Sep 2021 14:18:37 GMT
+Connection: close
+
+{"status":200,"message":"Category added","data":{"name":"Graphic design","description":"Graphic design is the process of visual communication and problem-solving through the use of typography, photography, and illustration.","_id":"614b3b3c3433aaf413214c1e","__v":0}}

@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 134
+ETag: W/"86-ar8/xynVhYjs9YAZ0QFtx8B7xrw"
+Date: Wed, 22 Sep 2021 16:45:59 GMT
+Connection: close
+
+{"status":200,"message":"updated","data":{"acknowledged":true,"modifiedCount":1,"upsertedId":null,"upsertedCount":0,"matchedCount":1}}

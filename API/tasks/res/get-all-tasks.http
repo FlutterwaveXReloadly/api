@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 1887
+ETag: W/"75f-9QTyZvOxjjKs/ttZ+VypdvPLmaY"
+Date: Wed, 22 Sep 2021 14:29:54 GMT
+Connection: close
+
+{"status":200,"message":"Tasks found","data":[{"_id":"614b082ce1f12d838bedab06","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"f72eca7d-1c5b-4046-9822-87dd6cc64484","createdAt":"2021-09-22T10:40:44.948Z","__v":0},{"_id":"614b08ede1f12d838bedab0a","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"c2c9e213-abec-4a16-9f40-0fd1203667b7","createdAt":"2021-09-22T10:43:57.363Z","__v":0},{"_id":"614b096bf008d21ebc74e27c","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"cbd2f061-ef0d-4c52-b324-8954f8743f40","createdAt":"2021-09-22T10:46:03.930Z","__v":0},{"_id":"614b09bc870df89e611f5f59","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"0afe4e83-a24e-4f2c-8a72-d48b73d55aeb","createdAt":"2021-09-22T10:47:24.714Z","__v":0},{"_id":"614b0a17bca9456a5eec4b32","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"unVerified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"5fc8fb6f-e9aa-43ad-91a1-8117e0b094b5","createdAt":"2021-09-22T10:48:55.140Z","__v":0},{"_id":"614b0a7db1a7d81bc22262bc","title":"Graphic design","description":"bla bla bla bla bla bla bla bla","status":"Verified","attachement":[],"interests":[],"deletedAt":null,"user":"61421f63ac0820d8f463037b","txRef":"150cfc6d-5177-473d-8fdf-7d3e2d019a05","createdAt":"2021-09-22T10:50:37.415Z","__v":0}]}
