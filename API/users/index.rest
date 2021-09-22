@@ -49,7 +49,8 @@ Authorization: Bearer {{userToken}}
       "IBAN": "RW-WERW"
    },
    "skills": ["Graphic design", "audio production"],
-   "type": 1
+   "type": 1,
+   "phoneNumber": "0780964422"
 }
 
 ###
