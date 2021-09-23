@@ -19,3 +19,8 @@ export const registerCompletion = joi.object().keys({
 export const registerProgress = joi.object().keys({
     progress: joi.string().required(),
 });
+
+export const approveInterest = joi.object().keys({
+    status: joi.string().required(),
+    user: joi.string().required()
+})

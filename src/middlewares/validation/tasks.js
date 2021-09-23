@@ -3,6 +3,7 @@ import {
   updateTask,
   registerCompletion,
   registerProgress,
+  approveInterest
 } from "./schemas/tasks";
 import validator from "../../helpers/validator";
 
@@ -21,3 +22,7 @@ export const validateRegisterCompletion = (req, res, next) => {
 export const validateRegisterProgress = (req, res, next) => {
   validator(registerProgress, req.body, res, next);
 };
+
+export const validateApproveInterest = (req, res, next) => {
+  validator(approveInterest, req.body, res, next);
+}
