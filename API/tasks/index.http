@@ -1,6 +1,6 @@
 @host = {{local}}/tasks
 @remote = http://workhaus-api.westeurope.azurecontainer.io:7000/v1/tasks
-POST {{remote}}/add
+POST {{host}}/add
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{companyToken}}
@@ -13,7 +13,7 @@ Authorization: Bearer {{companyToken}}
 }
 
 ###
-GET {{remote}}/614b082ce1f12d838bedab06
+GET {{host}}/614b082ce1f12d838bedab06
 Accept: application/json
 Authorization: Bearer {{adminToken}}
 
@@ -23,7 +23,7 @@ Accept: application/json
 Authorization: Bearer {{adminToken}}
 
 ### only users can register interests with a task
-PATCH {{remote}}/interests/614b082ce1f12d838bedab06
+PATCH {{host}}/interests/614c655de2926fc1e9cc1ab7
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{userToken}}
@@ -39,11 +39,22 @@ Authorization: Bearer {{companyToken}}
 }
 
 ### only users can update the progress of the task
-PATCH {{remote}}/progress/614b082ce1f12d838bedab06
+PATCH {{host}}/progress/614b082ce1f12d838bedab06
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{userToken}}
 
 {
-    "progress": "starts"
+    "progress": "finishes"
+}
+
+###
+PATCH {{host}}/approve/interests/614c655de2926fc1e9cc1ab7
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{companyToken}}
+
+{
+    "status": "approved",
+    "user": "614b5c745139f5cbb4279e1b"
 }

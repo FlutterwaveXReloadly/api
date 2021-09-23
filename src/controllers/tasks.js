@@ -63,10 +63,10 @@ export default class User {
         await set(id ? `tasks-${id}` : `tasks`, tasks);
         return out(res, tasks, 200, "Tasks found", undefined);
       }
-      return out(res, undefined, 404, "Tasks not found", "CT0-0");
+      return out(res, undefined, 404, "Tasks not found", "CT1-0");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT0-1");
+      return out(res, undefined, 500, "Internal server error", "CT1-1");
     }
   }
 
@@ -85,10 +85,10 @@ export default class User {
         await set(id ? `tasks-cat-${id}` : `tasks-cat`, tasks);
         return out(res, tasks, 200, "Tasks found", undefined);
       }
-      return out(res, undefined, 404, "Tasks not found", "CT1-0");
+      return out(res, undefined, 404, "Tasks not found", "CT2-0");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT1-1");
+      return out(res, undefined, 500, "Internal server error", "CT2-1");
     }
   }
 
@@ -98,15 +98,15 @@ export default class User {
       const { user } = req;
       const updates = await taskService.update(
         { _id: id },
-        { $push: { interests: user } }
+        { $push: { interests: { user, status: "pending" } } }
       );
       if (updates.modifiedCount === 1) {
         return out(res, updates, 200, "Interest registered", undefined);
       }
-      return out(res, undefined, 400, "Bad Request", "CT2-0");
+      return out(res, undefined, 400, "Bad Request", "CT3-0");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT2-1");
+      return out(res, undefined, 500, "Internal server error", "CT3-1");
     }
   }
 
@@ -123,10 +123,10 @@ export default class User {
       if (updates.modifiedCount === 1) {
         return out(res, updates, 200, "updated", undefined);
       }
-      return out(res, undefined, 400, "Bad Request", "CT3-0");
+      return out(res, undefined, 400, "Bad Request", "CT4-0");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT3-1");
+      return out(res, undefined, 500, "Internal server error", "CT4-1");
     }
   }
 
@@ -143,10 +143,30 @@ export default class User {
       if (updates.modifiedCount === 1) {
         return out(res, updates, 200, "updated", undefined);
       }
-      return out(res, undefined, 400, "Bad Request", "CT4-0");
+      return out(res, undefined, 400, "Bad Request", "CT5-0");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT4-1");
+      return out(res, undefined, 500, "Internal server error", "CT5-1");
     }
-   }
+  }
+
+  async approveInterest(req, res) {
+    try {
+      const { id } = req.params;
+      const { status, user } = req.body;
+      const updates = await taskService.update(
+        {
+          $and: [{ _id: id }, { user: req.user }, { "interests.$.user": user }],
+        },
+        { "interests.$.status": status }
+      );
+      if (updates.modifiedCount === 1) {
+        return out(res, updates, 200, "Interest approved", undefined);
+      }
+      return out(res, undefined, 400, "Bad Request", "CT6-0");
+    } catch (error) {
+      console.log(error);
+      return out(res, undefined, 500, "Internal server error", "CT6-1");
+    }
+  }
 }

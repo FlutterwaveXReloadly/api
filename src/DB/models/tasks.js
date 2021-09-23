@@ -6,8 +6,11 @@ const tasksModel = new mongoose.Schema({
     status: String,
     attachement: [String],
     interests: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'user'
+        },
+        status: String
     }],
     createdAt: {
         type: Date,
