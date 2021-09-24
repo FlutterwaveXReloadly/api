@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 149
+ETag: W/"95-XI45rVQjk6mbrWrDcrBtma4xzGM"
+Date: Fri, 24 Sep 2021 14:04:21 GMT
+Connection: close
+
+{"status":200,"message":"Wallet information found","data":[{"_id":"614c8efb4e59e2d469a66525","user":"614c8efb4e59e2d469a66523","amount":10,"__v":0}]}

@@ -4,6 +4,7 @@ const tasksModel = new mongoose.Schema({
     title: String,
     description: String,
     status: String,
+    amount: Number,
     attachement: [String],
     interests: [{
         user: {

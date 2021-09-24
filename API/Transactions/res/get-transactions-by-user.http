@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 209
+ETag: W/"d1-VLBFnH4L+HI8vkMo777UgK5Nzbg"
+Date: Fri, 24 Sep 2021 14:03:13 GMT
+Connection: close
+
+{"status":200,"message":"Transactions found","data":[{"_id":"614dd5e5e7b18b2e19fbfdb3","user":"614c8efb4e59e2d469a66523","amount":10,"type":"debit","reference":"f3f1addd-1f09-45ab-b7ea-c34c9305dd37","__v":0}]}

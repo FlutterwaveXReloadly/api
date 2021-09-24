@@ -1,13 +1,15 @@
-import { resolve } from "path";
+// import { resolve } from "path";
 import UserService from "../DB/services/user";
 import out from "../helpers/out";
 import { sign, verify } from "../helpers/jwt";
 import { compare, hash } from "../helpers/bcrypt";
-import { uploader } from "../helpers/cloudinary";
+// import { uploader } from "../helpers/cloudinary";
 import { env } from "../config/env";
 import mailer from "../helpers/mailer";
-const userService = new UserService();
+import WalletService from "../DB/services/wallets";
 
+const userService = new UserService();
+const walletService = new WalletService();
 export default class User {
   async login(req, res) {
     try {
@@ -61,7 +63,7 @@ export default class User {
         ...req.body,
         type: Number(req.params.type),
         password: await hash(password),
-        image: await uploader(resolve(req.file.path)),
+        // image: await uploader(resolve(req.file.path)),
         isVerified: false,
       });
       if (user) {
@@ -73,7 +75,9 @@ export default class User {
             link: `${env.HOST}/v1/users/verify?token=${verifyToken}`,
           },
         });
-        return out(res, user, 201, "Signed up well!", undefined);
+        const wallet = await walletService.createWallet({ user: user._id, amount: 0 });
+        console.log(wallet);
+        return out(res, user, 201, "Signed up successfully!", undefined);
       }
       return out(res, undefined, 500, "Internal server error", "CU1-1");
     } catch (error) {
@@ -156,7 +160,7 @@ export default class User {
       const { password } = req.body;
       const raw = {
         ...req.body,
-        password: password && await hash(password),
+        password: password && (await hash(password)),
       };
       const update = await userService.update({ _id: user }, raw);
       console.log(update);
@@ -183,7 +187,13 @@ export default class User {
       if (userData.length === 0) {
         return out(res, undefined, 404, "User not found", "CU5-0");
       }
-      return out(res, userData[0], 200, "User information was pulled", undefined);
+      return out(
+        res,
+        userData[0],
+        200,
+        "User information was pulled",
+        undefined
+      );
     } catch (error) {
       console.log(`ERROR: ${error.message}`);
       return out(res, undefined, 500, "Internal server error", "CU5-1");
