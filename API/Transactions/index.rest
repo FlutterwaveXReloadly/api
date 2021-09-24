@@ -1,0 +1,5 @@
+@host = {{local}}/transactions
+
+GET {{host}}
+Accept: application/json
+Authorization: Bearer {{userToken}}

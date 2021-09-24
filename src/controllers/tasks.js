@@ -1,18 +1,24 @@
 import { v4 } from "uuid";
-import { standard } from "../helpers/rave";
+import mongoose from "mongoose";
+
 import UserService from "../DB/services/user";
 import TaskService from "../DB/services/tasks";
+import WalletService from "../DB/services/wallets"
+import TransactionService from "../DB/services/transactions";
+
+import { standard } from "../helpers/rave";
 import out from "../helpers/out";
 import { get, set } from "../helpers/redis";
-import mongoose from "mongoose";
 
 const userService = new UserService();
 const taskService = new TaskService();
-
+const walletService = new WalletService();
+const transactionService = new TransactionService();
 export default class User {
   async createTask(req, res) {
     try {
       const { body } = req;
+      console.log(body.amount);
       const user = await userService.get({ _id: req.user });
       const txRef = v4();
       const task = await taskService.add({
@@ -20,7 +26,9 @@ export default class User {
         status: "unVerified",
         user: req.user,
         txRef,
+        amount: Number(body.amount),
       });
+      console.log(task.amount);
       const pay = await standard(
         body.amount,
         txRef,
@@ -134,6 +142,10 @@ export default class User {
     try {
       const { id } = req.params;
       const { completion } = req.body;
+      const task = await taskService.get({ _id: id });
+      const approvedUsers = task[0].interests.filter(
+        (interest) => interest.status === "approved"
+      );
       const updates = await taskService.update(
         { _id: id },
         {
@@ -141,6 +153,18 @@ export default class User {
         }
       );
       if (updates.modifiedCount === 1) {
+        if (completion === "completed") {
+          await walletService.updateWallet(
+            { user: approvedUsers[0].user },
+            { $inc: { amount: Number(task[0].amount) } }
+          );
+          await transactionService.add({
+            user: approvedUsers[0].user,
+            reference: task[0].txRef,
+            type: "debit",
+            amount: Number(task[0].amount),
+          }); 
+        }
         return out(res, updates, 200, "updated", undefined);
       }
       return out(res, undefined, 400, "Bad Request", "CT5-0");

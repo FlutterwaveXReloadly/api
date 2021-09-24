@@ -1,12 +1,12 @@
-@host = http://localhost:7000/v1/users
-
+@host = http://localhost:80/v1/users
+@ngrok = http://workhaus-api.westeurope.azurecontainer.io/v1/users
 POST {{host}}/login
 Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "xeles3851@shensufu.com",
-   "password": "qazwsxedc"
+   "email": "datav72731@soulsuns.com",
+   "password": "alain1231"
 }
 ###
 POST {{host}}/signup/0
@@ -14,7 +14,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "niwikib754@sicmag.com",
+   "email": "datav72731@soulsuns.com",
    "password": "alain1231",
    "names": "Alain C",
    "country": "rwanda"

@@ -1,0 +1,5 @@
+@host = {{local}}/wallets
+
+GET {{host}}
+Accept: application/json
+Authorization: Bearer {{userToken}}
