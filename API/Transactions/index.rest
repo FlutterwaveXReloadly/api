@@ -3,3 +3,13 @@
 GET {{host}}
 Accept: application/json
 Authorization: Bearer {{userToken}}
+
+###
+POST {{host}}/payout
+Accept: application/json
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+    "amount": 10
+}
