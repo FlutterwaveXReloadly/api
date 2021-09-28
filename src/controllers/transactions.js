@@ -7,6 +7,12 @@ import WalletService from "../DB/services/wallets";
 import out from "../helpers/out";
 import { get, set } from "../helpers/redis";
 import { transfers } from "../helpers/rave";
+import {
+  getOperators,
+  getFxRate,
+  airtimeTopup,
+  getProducts,
+} from "../helpers/reloadly";
 
 const transactionService = new TransactionService();
 const userService = new UserService();
@@ -52,7 +58,7 @@ export default class Transactions {
         narration: "WorkHaus payout",
         reference,
         currency: "USD",
-        callback_url: 'https://google.com',
+        callback_url: "https://google.com",
         beneficiary_name: user[0].names,
       });
       console.log(transfer);
@@ -68,9 +74,12 @@ export default class Transactions {
       if (!transaction) {
         return out(res, undefined, 400, "Something went wrong", "CTR1-4");
       }
-      const updateWallet = await walletService.updateWallet({ user: req.user }, {
-        amount: wallet[0].amount - req.body.amount,
-      });
+      const updateWallet = await walletService.updateWallet(
+        { user: req.user },
+        {
+          amount: wallet[0].amount - req.body.amount,
+        }
+      );
       if (updateWallet.modifiedCount === 0) {
         return out(res, undefined, 400, "Something went wrong", "CTR1-5");
       }
@@ -78,6 +87,69 @@ export default class Transactions {
     } catch (error) {
       console.log(error);
       return out(res, undefined, 500, "Internal server error", "CTR1-6");
+    }
+  }
+
+  async reloadlyTopup(req, res) {
+    try {
+      const { operatorId, amount, number } = req.body;
+      const user = await userService.get({ _id: req.user });
+      if (user.length === 0) {
+        return out(res, undefined, 400, "Something went wrong", "CTR2-0");
+      }
+      const wallet = await walletService.getWallets({ user: req.user });
+      if (wallet.length === 0) {
+        return out(res, undefined, 400, "Something went wrong", "CTR2-1");
+      }
+      if (wallet[0].amount < amount) {
+        return out(res, undefined, 400, "Insufficient funds", "CTR2-2");
+      }
+      const convertedAmount = await getFxRate(operatorId, Number(amount));
+      const topup = await airtimeTopup({
+        operatorId,
+        recieverPhone: {
+          country: user[0].country,
+          number: user[0].phoneNumber,
+        },
+        amount: convertedAmount,
+        number,
+      });
+      if (topup.errorCode) {
+        console.log(topup.errorCode);
+        return out(res, undefined, 400, "Something went wrong", "CTR2-3");
+      }
+      const transaction = await transactionService.add({
+        user: req.user,
+        amount,
+        type: "credit-topup",
+        reference: topup.transactionId,
+      });
+      if (!transaction) {
+        return out(res, undefined, 400, "Something went wrong", "CTR2-4");
+      }
+      const updateWallet = await walletService.updateWallet(
+        { user: req.user },
+        { amount: wallet[0].amount - amount }
+      );
+      if (updateWallet.modifiedCount === 0) {
+        return out(res, undefined, 400, "Something went wrong", "CTR2-5");
+      }
+      return out(res, transaction, 200, "Transaction successful", undefined);
+    } catch (error) {
+      console.log(error);
+      return out(res, undefined, 500, "Internal server error", "CTR2-6");
+    }
+  }
+
+  async addReloadlyProducts(req, res) {
+    try {
+      const products = await getProducts();
+      if (products.errorCode) {
+        return out(res, undefined, 400, "Something went wrong", "CTR3-0");
+      }
+      
+    } catch (error) {
+      
     }
   }
 }
