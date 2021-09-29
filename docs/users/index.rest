@@ -1,11 +1,11 @@
-@host = http://localhost:80/v1/users
+@host = {{local}}/users
 @ngrok = http://workhaus-api.westeurope.azurecontainer.io/v1/users
 POST {{host}}/login
 Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "datav72731@soulsuns.com",
+   "email": "xelesoq3851@shensufu.com",
    "password": "alain1231"
 }
 ###

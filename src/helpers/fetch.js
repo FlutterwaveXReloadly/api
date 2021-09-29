@@ -6,7 +6,8 @@ const Fetch = async (url, method, headers, body) => {
     headers,
     body: JSON.stringify(body),
   });
-  return await response.json();
+  const responseJson = await response.json();
+  return responseJson;
 };
 
 export default Fetch;
