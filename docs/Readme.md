@@ -611,6 +611,12 @@ POST /v1/transactions/giftcards/order
 Accept: application/json
 Authorization: Bearer {{userToken}}
 Content-Type: application/json
+
+{
+    "productId": 2,
+    "quantity": 1,
+    "denomination": 0
+}
 ```
 
 Response
