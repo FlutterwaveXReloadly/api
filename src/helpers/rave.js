@@ -40,3 +40,19 @@ export const transVerify = async (transId) => {
   );
   return response;
 }
+
+export const transfers = async (raw) => {
+  const response = await Fetch(`${env.RAVE_HOST}/transfers`, 'POST', {
+    Authorization: `Bearer ${env.RAVE_SEC}`,
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  }, raw);
+  return response;
+};
+
+export const verifyTransfer = async (id) => {
+  const response = await Fetch(`${env.RAVE_HOST}/transfers/${id}`, 'GET', {
+    Authorization: `Bearer ${env.RAVE_SEC}`,
+  });
+  return response;
+};

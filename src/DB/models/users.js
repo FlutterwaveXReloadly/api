@@ -10,9 +10,9 @@ const schema = new mongoose.Schema({
     isVerified: Boolean,
     phoneNumber: String,
     bankDetails: {
-        accountNumber: String,
+        accountNumber: Number,
         bankName: String,
-        IBAN: String,
+        bankId: String,
     },
     skills: [String],
     createdAt: {

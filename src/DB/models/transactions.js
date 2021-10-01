@@ -17,6 +17,10 @@ const schema = new mongoose.Schema({
     reference: {
         type: String,
         required: true,
+    },
+    status: {
+        type: String,
+        default: 'pending',
     }
 });
 

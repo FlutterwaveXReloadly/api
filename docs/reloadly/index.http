@@ -1,0 +1,12 @@
+@host = https://auth.reloadly.com
+
+POST {{host}}/oauth/token HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "grant_type": "client_credentials",
+    "client_id": "{{client_id}}",
+    "client_secret": "{{client_secret}}",
+    "audience":"https://topups.reloadly.com"
+}

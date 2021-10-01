@@ -1,0 +1,13 @@
+@host = {{local}}/hooks
+
+POST {{host}}/rave
+verif-hash: {{enc_key}}
+Content-Type: application/json
+
+{
+    "data": {
+        "id": "207496",
+        "reference": "99942ec6-412d-4127-ad62-cb98a5d2f96b"
+    },
+    "event": "transfer.completed"
+}

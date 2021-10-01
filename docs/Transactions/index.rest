@@ -1,0 +1,53 @@
+@host = {{local}}/transactions
+
+GET {{host}}
+Accept: application/json
+Authorization: Bearer {{userToken}}
+
+###
+POST {{host}}/payout
+Accept: application/json
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+    "amount": 10
+}
+###
+POST {{host}}/topup
+Accept: application/json
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+    "amount": 0.3,
+    "number": "0780964422",
+    "country": "RW"
+}
+###
+GET {{host}}/countries
+Accept: application/json
+
+###
+PUT {{host}}/products/sync
+Accept: application/json
+Authorization: Bearer {{adminToken}}
+###
+GET {{host}}/products/search?q=united
+Accept: application/json
+Authorization: Bearer {{userToken}}
+###
+POST {{host}}/giftcards/order
+Accept: application/json
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+    "productId": 2,
+    "quantity": 1,
+    "denomination": 0
+}
+###
+GET {{host}}/giftcards/redeem/262
+Accept: application/json
+Authorization: Bearer {{userToken}}
