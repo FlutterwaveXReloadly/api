@@ -33,6 +33,10 @@
 - [Order giftcards](#18-order-giftcards)
 - [Redeem giftcard](#19-redeem-giftcard)
 
+### Wallets
+
+- [Get wallet](#20-get-wallet)
+
 ### All Routes
 
 ### 1. Login user
@@ -660,6 +664,29 @@ Response
     {
       "cardNumber": "LJ2yktest",
       "pinCode": "57730test"
+    }
+  ]
+}
+```
+
+### 20. Get wallet
+
+```rest
+GET /v1/wallets
+Accept: application/json
+Authorization: Bearer {{userToken}}
+```
+
+```json
+{
+  "status": 200,
+  "message": "Wallet information found",
+  "data": [
+    {
+      "_id": "614c8efb4e59e2d469a66525",
+      "user": "614c8efb4e59e2d469a66523",
+      "amount": 9928.082060000004,
+      "__v": 0
     }
   ]
 }
