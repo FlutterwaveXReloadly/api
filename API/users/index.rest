@@ -5,8 +5,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "koyogi7469@shensufu.com",
-   "password": "nAdia123"
+   "email": "datav72731@soulsuns.com",
+   "password": "alain1231"
 }
 ###
 POST {{host}}/signup/0
@@ -14,8 +14,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "datav72731@soulsuns.com",
-   "password": "alain1231",
+   "email": "datav7273w1@soulsuns.com",
+   "password": "alain12312",
    "names": "Alain C",
    "country": "rwanda"
 }
@@ -44,9 +44,9 @@ Authorization: Bearer {{userToken}}
 
 {
    "bankDetails": {
-      "accountNumber": "0690000031",
+      "accountNumber": "1234567890",
       "bankName": "banque mondiale",
-      "bankId": "90115"
+      "bankId": "054"
    },
    "skills": ["Graphic design", "audio production"],
    "phoneNumber": "0780964422"

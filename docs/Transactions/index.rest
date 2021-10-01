@@ -48,6 +48,6 @@ Content-Type: application/json
     "denomination": 0
 }
 ###
-GET {{host}}/giftcards/redeem/262
+GET {{host}}/giftcards/redeem/264
 Accept: application/json
 Authorization: Bearer {{userToken}}
