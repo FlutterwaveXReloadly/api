@@ -99,13 +99,13 @@ export default class User {
       );
       console.log(userData);
       if (userData) {
-        return res.redirect(302, `${env.FRONTEND_HOST}`);
+        return res.redirect(302, `https://google.com`);
       } else {
-        return res.redirect(302, `${env.FRONTEND_HOST}/400`);
+        return res.redirect(302, `https://google.com`);
       }
     } catch (error) {
       console.log(`ERROR: ${error.message}`);
-      return res.redirect(302, `${env.FRONTEND_HOST}/500`);
+      return res.redirect(302, `https://google.com`);
     }
   }
 

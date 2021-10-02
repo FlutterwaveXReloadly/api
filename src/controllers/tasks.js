@@ -122,8 +122,14 @@ export default class User {
     try {
       const { id } = req.params;
       const { progress } = req.body;
+      const task = await taskService.get({ _id: id });
+      const approvedUsers = task[0].interests.filter((interest) => interest.status === "approved");
+      if (approvedUsers[0].user._id.toString() !== req.user) {
+        console.log(approvedUsers[0].user._id, req.user)
+        return out(res, undefined, 403, "You are not allowed to add progress on this task", "CT4-0");
+      }
       const updates = await taskService.update(
-        { _id: id },
+        { $and: [{ _id: id }, { "interests.$.status": "approved" }] },
         {
           progress,
         }
@@ -131,10 +137,10 @@ export default class User {
       if (updates.modifiedCount === 1) {
         return out(res, updates, 200, "updated", undefined);
       }
-      return out(res, undefined, 400, "Bad Request", "CT4-0");
+      return out(res, undefined, 400, "Bad Request", "CT4-1");
     } catch (error) {
       console.log(error);
-      return out(res, undefined, 500, "Internal server error", "CT4-1");
+      return out(res, undefined, 500, "Internal server error", "CT4-2");
     }
   }
 

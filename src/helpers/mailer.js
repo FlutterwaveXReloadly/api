@@ -33,7 +33,7 @@ const mailer = async (type, emailToSend) => {
         throw new Error(err);
       } else {
         const emailOptions = {
-          from: '"sel support"<alainchristian87@gmail.com>',
+          from: '"WorkHaus support"<alainchristian87@gmail.com>',
           to: emailToSend.to,
           subject: emailToSend.subject,
           html: data,

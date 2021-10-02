@@ -13,9 +13,9 @@ Authorization: Bearer {{companyToken}}
 }
 
 ###
-GET {{host}}/614dd30a879ae119d42f01cc
+GET {{host}}/61580da4df523084cb9f58cf
 Accept: application/json
-Authorization: Bearer {{userToken}}
+Authorization: Bearer {{userToken2}}
 
 ###
 
@@ -24,13 +24,13 @@ Accept: application/json
 Authorization: Bearer {{adminToken}}
 
 ### only users can register interests with a task
-PATCH {{host}}/interests/6156bdda16b56c0b62df6a8e
+PATCH {{host}}/interests/61580da4df523084cb9f58cf
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{userToken}}
+Authorization: Bearer {{userToken2}}
 
 ### only clients/companies can update the completion of a task
-PATCH {{host}}/completion/6156bdda16b56c0b62df6a8e
+PATCH {{host}}/completion/61580da4df523084cb9f58cf
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{companyToken}}
@@ -40,17 +40,17 @@ Authorization: Bearer {{companyToken}}
 }
 
 ### only users can update the progress of the task
-PATCH {{host}}/progress/614b082ce1f12d838bedab06
+PATCH {{host}}/progress/61580da4df523084cb9f58cf
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer {{userToken}}
+Authorization: Bearer {{userToken2}}
 
 {
-    "progress": "finishes"
+    "progress": "unfinished"
 }
 
 ### only clients can approve a user's request
-PATCH {{host}}/approve/interests/614dd30a879ae119d42f01cc
+PATCH {{host}}/approve/interests/61580da4df523084cb9f58cf
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{companyToken}}

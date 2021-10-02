@@ -1,20 +1,20 @@
-@host = {{local}}/users
-@ngrok = http://workhaus-api.westeurope.azurecontainer.io/v1/users
+@host = {{az-remote}}/users
+@ngrok = https://086c-2c0f-eb68-21f-b900-2823-608b-f926-7ee8.ngrok.io/v1/users
 POST {{host}}/login
 Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "koyogi7469@shensufu.com",
-   "password": "nAdia123"
+   "email": "jetis55158@busantei.com",
+   "password": "alain1231"
 }
 ###
-POST {{host}}/signup/0
+POST {{host}}/signup/1
 Content-Type: application/json
 Accept: application/json
 
 {
-   "email": "datav72731@soulsuns.com",
+   "email": "jetis55158@busantei.com",
    "password": "alain1231",
    "names": "Alain C",
    "country": "rwanda"
@@ -56,4 +56,4 @@ Authorization: Bearer {{userToken}}
 GET {{host}}/
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer {{userToken}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjE1OGQ3YThhYjc2OTM3MWFkMmE4M2QwIiwiYWNjZXNzIjoxLCJpYXQiOjE2MzMyMTIzNTksImV4cCI6MTYzNTgwNDM1OX0.Fdo4JJJygrht44lw6LwFYQ_Cp7tTNWboWJKEylsDylU
