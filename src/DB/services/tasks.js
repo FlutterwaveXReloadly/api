@@ -6,7 +6,7 @@ export default class Tasks {
   }
 
   async get(search) {
-    return await tasks.find(search);
+    return await tasks.find(search).populate("interests.user", "names skills");
   }
 
   async update(search, raw) {
