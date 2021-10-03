@@ -10,7 +10,7 @@ import db from "./config/db";
 import routes from "./routes";
 
 const app = express();
-const port = env.PORT || 7000;
+const port = env.PORT;
 const upload = multer({ dest: '../uploads/' });
 
 await db();

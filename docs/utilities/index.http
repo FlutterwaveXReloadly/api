@@ -1,5 +1,5 @@
-@host = {{az-remote}}/wallets
+@host = {{az-remote}}/utilities
 
-GET {{host}}
+GET {{host}}/banks/UG
 Accept: application/json
 Authorization: Bearer {{userToken}}

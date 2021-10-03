@@ -28,7 +28,6 @@
 - [Get transactions](#13-get-transactions)
 - [Payout](#14-payout)
 - [Top up](#15-top-up)
-- [Get countries](#16-get-countries)
 - [Search products](#17-search-products)
 - [Order giftcards](#18-order-giftcards)
 - [Redeem giftcard](#19-redeem-giftcard)
@@ -36,6 +35,11 @@
 ### Wallets
 
 - [Get wallet](#20-get-wallet)
+
+### Utilities
+
+- [Get banks](#21-get-banks)
+- [Get countries](#16-get-countries)
 
 ### All Routes
 
@@ -696,4 +700,46 @@ Authorization: Bearer {{userToken}}
     }
   ]
 }
+```
+
+### 21. Get banks
+
+***Any token will work not just users***
+
+```rest
+GET /v1/utilities/banks
+Accept: application/json
+Authorization: Bearer {{userToken}}
+```
+
+Response
+
+```json
+{
+  "status": 200,
+  "message": "Banks retrieved",
+  "data": [
+    {
+      "id": 298,
+      "code": "MPS",
+      "name": "Mobile Money"
+    },
+    {
+      "id": 950,
+      "code": "20543400",
+      "name": "Banque Nationale du Rwanda"
+    },
+    {
+      "id": 951,
+      "code": "20543500",
+      "name": "Banque Rwandaise de Developpement SA (BRD)"
+    },
+    {
+      "id": 952,
+      "code": "20543600",
+      "name": "Banque Populaire du Rwanda"
+    }
+  ]
+}
+
 ```

@@ -56,3 +56,10 @@ export const verifyTransfer = async (id) => {
   });
   return response;
 };
+
+export const getBanks = async (country) => {
+  const response = await Fetch(`${env.RAVE_HOST}/banks/${country}`, 'GET', {
+    Authorization: `Bearer ${env.RAVE_SEC}`
+  });
+  return response;
+}
