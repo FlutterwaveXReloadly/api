@@ -705,9 +705,9 @@ Authorization: Bearer {{userToken}}
 ### 21. Get banks
 
 ***Any token will work not just users***
-
+***Ex /v1/utilities/banks/RW***
 ```rest
-GET /v1/utilities/banks
+GET /v1/utilities/banks/:country
 Accept: application/json
 Authorization: Bearer {{userToken}}
 ```
